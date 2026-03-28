@@ -803,6 +803,31 @@ export class PatientServiceExport {
             throw new Error('Đã xảy ra lỗi khi cập nhật thông tin bệnh nhân!');
         }
     }
+
+    async updatePatientQCName(req: any, body: any) {
+
+        const { patientId, QCName } = body
+        try {
+            if (patientId) {
+                const result = await this.patientRepository.update(
+                    { id: patientId }, // Điều kiện để tìm bệnh nhân
+                    { QCName: QCName === undefined ? null : QCName } // Giá trị cần cập nhật
+                );
+                return {
+                    message: 'Cập nhật thành công!',
+                    result,
+                };
+            } else {
+                return {
+                    message: 'ID không được cung cấp!',
+                };
+            }
+        } catch (error) {
+            console.log(error);
+            throw new Error('Đã xảy ra lỗi khi cập nhật thông tin bệnh nhân!');
+        }
+    }
+
     async updateNotication(patientId: number, hospitalId: number) {
         if (patientId) {
             const users = await this.usersRepository.find()

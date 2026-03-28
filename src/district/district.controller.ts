@@ -16,7 +16,7 @@ export class districtController {
         const data = await this.districtService.create(req, body);
         return {
             statusCode: 1,
-            // length: data.length,
+            // length: data?.length,
             message: 'create district suscess!',
             data: data,
         };

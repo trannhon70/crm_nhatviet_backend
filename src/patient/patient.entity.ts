@@ -56,6 +56,10 @@ export class Patient {
     @ManyToOne(() => Departments, (de) => de.id)
     department: Departments;
 
+    //lấy từ name của khoa
+    @Column({ nullable: true })
+    QCName: string
+
     // nguồn đến
     @Index()
     @Column({ nullable: true })

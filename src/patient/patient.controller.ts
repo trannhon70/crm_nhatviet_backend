@@ -312,6 +312,16 @@ export class PatientController {
         };
     }
 
+    @Post('update-patient-QCName')
+    async updatePatientQCName(@Req() req: any, @Body() body: any) {
+        const data = await this.patientServiceExport.updatePatientQCName(req, body);
+        return {
+            statusCode: 1,
+            message: 'update doctor id patient success!',
+            data: data,
+        };
+    }
+
     @Post('update-patient-status')
     async updatePatientStatus(@Req() req: any, @Body() body: any) {
         const data = await this.patientServiceExport.updatePatientStatus(req, body);
