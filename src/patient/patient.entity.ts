@@ -169,4 +169,8 @@ export class Patient {
     //chi phí
     @Column({ type: 'varchar', length: 125, nullable: true })
     money: string;
+
+    //nghề nghiệp
+    @Column({ type: 'varchar', nullable: true })
+    job: string;
 }

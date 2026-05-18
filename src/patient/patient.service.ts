@@ -95,8 +95,8 @@ export class PatientService {
             treatment: body.treatment ? body.treatment : '',
             record: body.record ? body.record : '',
             file: body.file ? body.file : '',
-            money: body.money ? body.money : ''
-
+            money: body.money ? body.money : '',
+            job: body.job ? body.job : ''
 
         }
 
@@ -130,6 +130,7 @@ export class PatientService {
             record: result.record ? result.record : '',
             file: result.file ? result.file : '',
             money: result.money ? result.money : '',
+            job: result.job ? result.job : '',
             action: 'THÊM',
 
         }
@@ -439,6 +440,7 @@ export class PatientService {
                 record: result.record ? result.record : '',
                 file: result.file ? result.file : '',
                 money: result.money ? result.money : '',
+                job: result.job ? result.job : '',
                 action: 'XÓA',
                 created_at: currentTimestamp(),
             }
@@ -543,6 +545,7 @@ export class PatientService {
                 treatment: JSON.stringify(body?.treatment),
                 record: body?.record,
                 money: body?.money,
+                job: body?.job,
             }
 
             if (body?.status === STATUS.DADEN && body?.appointmentTime === patient?.appointmentTime) {
@@ -593,6 +596,7 @@ export class PatientService {
                 record: result.record ? result.record : '',
                 file: result.file ? result.file : '',
                 money: result.money ? result.money : '',
+                job: result.job ? result.job : '',
                 action: 'CẬP NHẬT',
                 created_at: currentTimestamp(),
             }

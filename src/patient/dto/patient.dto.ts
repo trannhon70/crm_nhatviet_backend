@@ -48,4 +48,6 @@ export class PatientDto {
 
     //hồ sơ tiếp nhận
     record?: string
+    // nghề nghiệp
+    job?: string
 }
