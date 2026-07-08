@@ -828,6 +828,30 @@ export class PatientServiceExport {
         }
     }
 
+    async updatePatientLocation(req: any, body: any) {
+
+        const { patientId, location_QC } = body
+        try {
+            if (patientId) {
+                const result = await this.patientRepository.update(
+                    { id: patientId }, // Điều kiện để tìm bệnh nhân
+                    { location_QC: location_QC === undefined ? null : location_QC } // Giá trị cần cập nhật
+                );
+                return {
+                    message: 'Cập nhật thành công!',
+                    result,
+                };
+            } else {
+                return {
+                    message: 'ID không được cung cấp!',
+                };
+            }
+        } catch (error) {
+            console.log(error);
+            throw new Error('Đã xảy ra lỗi khi cập nhật thông tin bệnh nhân!');
+        }
+    }
+
     async updateNotication(patientId: number, hospitalId: number) {
         if (patientId) {
             const users = await this.usersRepository.find()

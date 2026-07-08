@@ -22,40 +22,41 @@ import { PhoneBlacklist } from "src/phone-blacklist/phone-blacklist.entity";
 
 
 @Module({
-    imports:[
+    imports: [
         TypeOrmModule.forFeature([Users, Patient, ChatPatient, HistoryPatient, Media, Departments, Diseases, Notification, Doctor, Files, PhoneBlacklist]),
         CustomJwtModule,
         RedisModule
     ],
     controllers: [PatientController],
-    providers:[PatientService, PatientServiceStatistical, PatientServiceExport],
-    exports:[]
+    providers: [PatientService, PatientServiceStatistical, PatientServiceExport],
+    exports: []
 })
 
 export class PatientsModule implements NestModule {
-  
+
     configure(consumer: MiddlewareConsumer) {
         consumer
-          .apply(AuthMiddleware, LoggerMiddleware) 
-          .forRoutes(
-            { path: 'patient/create', method: RequestMethod.POST },
-            { path: 'patient/get-paging', method: RequestMethod.GET },
-            { path: 'patient/get-by-id/:id', method: RequestMethod.GET },
-            { path: 'patient/delete/:id', method: RequestMethod.DELETE },
-            { path: 'patient/update/:id', method: RequestMethod.PUT },
-            { path: 'patient/upload/:id', method: RequestMethod.POST },
-            { path: 'patient/get-history-action/:id', method: RequestMethod.GET },
-            { path: 'patient/get-thong-ke-ngay-hien-tai', method: RequestMethod.GET },
-            { path: 'patient/get-thong-ke-all', method: RequestMethod.GET },
-            { path: 'patient/thong-ke-dang-ky', method: RequestMethod.GET },
-            { path: 'patient/danh-sach-xep-hang-tham-kham', method: RequestMethod.GET },
-            { path: 'patient/thong-ke-qua-kenh', method: RequestMethod.GET },
-            { path: 'patient/thong-ke-khoa', method: RequestMethod.GET },
-            { path: 'patient/thong-ke-benh', method: RequestMethod.GET },
-            { path: 'patient/thong-ke-tu-van', method: RequestMethod.GET },
-            { path: 'patient/xuat-du-lieu-benh-nhan', method: RequestMethod.GET },
-            { path: 'patient/bao-cao-khu-vuc', method: RequestMethod.GET },
-           
-        ); 
+            .apply(AuthMiddleware, LoggerMiddleware)
+            .forRoutes(
+                { path: 'patient/create', method: RequestMethod.POST },
+                { path: 'patient/get-paging', method: RequestMethod.GET },
+                { path: 'patient/get-by-id/:id', method: RequestMethod.GET },
+                { path: 'patient/delete/:id', method: RequestMethod.DELETE },
+                { path: 'patient/update/:id', method: RequestMethod.PUT },
+                { path: 'patient/upload/:id', method: RequestMethod.POST },
+                { path: 'patient/get-history-action/:id', method: RequestMethod.GET },
+                { path: 'patient/get-thong-ke-ngay-hien-tai', method: RequestMethod.GET },
+                { path: 'patient/get-thong-ke-all', method: RequestMethod.GET },
+                { path: 'patient/thong-ke-dang-ky', method: RequestMethod.GET },
+                { path: 'patient/danh-sach-xep-hang-tham-kham', method: RequestMethod.GET },
+                { path: 'patient/thong-ke-qua-kenh', method: RequestMethod.GET },
+                { path: 'patient/thong-ke-khoa', method: RequestMethod.GET },
+                { path: 'patient/thong-ke-benh', method: RequestMethod.GET },
+                { path: 'patient/thong-ke-tu-van', method: RequestMethod.GET },
+                { path: 'patient/xuat-du-lieu-benh-nhan', method: RequestMethod.GET },
+                { path: 'patient/bao-cao-khu-vuc', method: RequestMethod.GET },
+                { path: 'patient/update-patient-location', method: RequestMethod.POST },
+
+            );
     }
-  }
+}

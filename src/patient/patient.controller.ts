@@ -322,6 +322,16 @@ export class PatientController {
         };
     }
 
+    @Post('update-patient-location')
+    async updatePatientLocation(@Req() req: any, @Body() body: any) {
+        const data = await this.patientServiceExport.updatePatientLocation(req, body);
+        return {
+            statusCode: 1,
+            message: 'update location patient success!',
+            data: data,
+        };
+    }
+
     @Post('update-patient-status')
     async updatePatientStatus(@Req() req: any, @Body() body: any) {
         const data = await this.patientServiceExport.updatePatientStatus(req, body);

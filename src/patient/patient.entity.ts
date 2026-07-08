@@ -179,4 +179,8 @@ export class Patient {
     //nghề nghiệp
     @Column({ type: 'varchar', nullable: true })
     job: string;
+
+    //vị trí hẹn
+    @Column({ nullable: true })
+    location_QC: string;
 }
