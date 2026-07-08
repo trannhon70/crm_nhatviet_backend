@@ -12,6 +12,12 @@ import { Users } from "src/users/users.entity";
 import { Column, Entity, Index, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity({ name: 'patient' })
+@Index(['delete', 'created_at'])
+@Index(['hospitalId', 'created_at'])
+@Index(['doctorId', 'status'])
+@Index(['departmentId'])
+@Index(['phone'])
+@Index(['userId'])
 export class Patient {
     @PrimaryGeneratedColumn()
     id: number;

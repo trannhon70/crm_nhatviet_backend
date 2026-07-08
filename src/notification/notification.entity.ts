@@ -3,6 +3,8 @@ import { Users } from "src/users/users.entity";
 import { Column, Entity, Index, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity({ name: 'notification' })
+@Index('IDX_NOTIFICATION_HOSPITAL_USER_ID', ['hospitalId', 'userId', 'id'])
+@Index('IDX_NOTIFICATION_USER_STATUS', ['userId', 'status'])
 export class Notification {
     @PrimaryGeneratedColumn()
     id: number;

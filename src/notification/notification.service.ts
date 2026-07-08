@@ -55,7 +55,7 @@ export class NotificationService {
             qb.where(whereCondition, parameters);
         }
 
-        const [result, total] = await qb.getManyAndCount();
+        const result = await qb.getMany();
 
         const enrichedResult = await Promise.all(
             result.map(async (item: any) => {
@@ -90,10 +90,10 @@ export class NotificationService {
         return {
             totalStatus: result.filter(item => item.status === 0).length,
             data: enrichedResult,
-            total: total,
+            // total: total,
             pageIndex: pageIndex,
             pageSize: pageSize,
-            totalPages: Math.ceil(total / pageSize),
+            // totalPages: Math.ceil(total / pageSize),
         };
     }
 
