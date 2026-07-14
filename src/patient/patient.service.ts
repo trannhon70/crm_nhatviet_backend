@@ -53,7 +53,7 @@ export class PatientService {
         const checkPhone = await this.patientRepository.findOne({
             where: {
                 phone: body.phone.trim(),
-                hospitalId: body.hospitalId,
+                // hospitalId: body.hospitalId,
             }
         })
 
